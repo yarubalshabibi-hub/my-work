@@ -1,0 +1,29 @@
+Appointment Cancellation
+
+Appointment.status = “Cancelled.”
+Bill generation skipped or linked Bill.status = “Cancelled.”
+All related AppointmentService entries remain for audit.
+
+
+Doctor Leaving
+
+Keep doctor record but mark active = false.
+FK in Appointment and MedicalRecord preserved to maintain history.
+Department.head_doctor_id updates to new head.
+
+
+
+
+
+Partial Payments
+
+Multiple Payment entries per Bill, allowing sum(payment.amount) < bill.total_amount.
+Bill.status updates dynamically (Open | Partially Paid | Paid).
+
+
+
+
+Service Price Changes
+
+Each price change creates a new Service record or a new entry in a ServicePriceHistory table (if added).
+AppointmentService.unit_price captures snapshot at booking time so bills remain accurate historically.

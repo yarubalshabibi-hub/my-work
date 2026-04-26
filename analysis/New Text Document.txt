@@ -1,0 +1,30 @@
+ Entities
+Patient
+Stores all demographic and contact details.
+Doctor
+Contains professional details and specialization.
+Department
+Defines hospital divisions (Cardiology, Pediatrics, etc.).
+Appointment
+Links patient and doctor; stores visit details.
+Service
+Represents any test, treatment, or procedure available.
+AppointmentService (bridge entity)
+Resolves many‑to‑many relationship between Appointment and Service; includes Quantity and UnitPrice.
+MedicalRecord
+Stores diagnosis, treatment notes, and prescriptions.
+Bill
+Represents the financial document for an appointment.
+Payment
+Stores one or more payments against a bill (supports partial payments).
+
+Relationships (raw form)
+Patient books Appointment → 1‑to‑many
+Doctor attends Appointment → 1‑to‑many
+Department has Doctors → 1‑to‑many
+Doctor heads Department → optional 1‑to‑1
+Appointment includes Service → many‑to‑many via AppointmentService
+Appointment generates MedicalRecord → 1‑to‑1 (optional)
+Appointment produces Bill → 1‑to‑1
+Bill receives Payment → 1‑to‑many
+Service appears in many Appointments → many‑to‑many
